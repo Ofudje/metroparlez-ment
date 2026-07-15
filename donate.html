@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate — Metro Parlez-Ment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --red: #ed3237;
+        --red-dark: #be2929;
+        --red-light: #fdecea;
+        --border: #dadbd6;
+        --footer-bg: #7b1818;
+        --radius: 10px;
+        --shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: #1a1a1a;
+        background: #f7f6f4;
+      }
+      h1,
+      h2 {
+        font-family: "Playfair Display", Georgia, serif;
+        color: #020c0a;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        position: relative;
+        text-align: center;
+        padding: 60px 60px 50px;
+        background: #fff;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 80% 130% at 50% 0%,
+          rgba(229, 53, 45, 0.14) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .hero h1 {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--red);
+        margin-bottom: 14px;
+        position: relative;
+      }
+      .hero p {
+        font-size: 15px;
+        color: #666;
+        line-height: 1.75;
+        max-width: 480px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      /* ── MAIN CARD ── */
+      .donate-wrapper {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+      }
+
+      .donate-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      /* Section (label + control group) */
+      .donate-section {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      /* Section labels */
+      .field-label {
+        font-size: 20px;
+        font-weight: 700;
+        color: #020c0a;
+      }
+
+      /* ── DONATION TYPE ── */
+      .type-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .type-option {
+        border: 1.5px solid transparent;
+        border-radius: 20px;
+        padding: 24px;
+        cursor: pointer;
+        transition: all 0.2s;
+        user-select: none;
+      }
+      .type-option:hover {
+        border-color: var(--border);
+      }
+      .type-option.selected {
+        border-color: var(--red);
+        background: #fff;
+      }
+
+      .type-option h4 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #020c0a;
+        margin-bottom: 8px;
+      }
+      .type-option p {
+        font-size: 14px;
+        color: #696969;
+      }
+
+      /* ── AMOUNT GRID ── */
+      .amount-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+      }
+
+      .amount-btn {
+        border: 1.5px solid transparent;
+        border-radius: 18px;
+        padding: 18px 20px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 700;
+        color: #020c0a;
+        background: #fff;
+        transition: all 0.2s;
+        user-select: none;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      }
+      .amount-btn:hover {
+        border-color: var(--border);
+      }
+      .amount-btn.selected {
+        border-color: var(--red);
+        background: var(--red-light);
+        color: var(--red);
+      }
+
+      /* ── FORM FIELDS ── */
+      .form-field {
+        margin-bottom: 0;
+      }
+      .form-field label {
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        color: #020c0a;
+        margin-bottom: 12px;
+      }
+      .form-field label span {
+        color: inherit;
+      }
+
+      .form-field input {
+        width: 100%;
+        padding: 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 20px;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        color: #020c0a;
+        outline: none;
+        transition: border-color 0.2s;
+        background: #fff;
+      }
+      .form-field input::placeholder {
+        color: #8e918c;
+      }
+      .form-field input:focus {
+        border-color: var(--red);
+      }
+
+      /* ── SUBMIT BUTTON ── */
+      .btn-view-bank {
+        width: 100%;
+        padding: 16px;
+        background: var(--red);
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 8px;
+        transition:
+          background 0.2s,
+          transform 0.1s;
+        letter-spacing: 0.3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        box-shadow: 0 18px 30px rgba(237, 50, 55, 0.18);
+      }
+      .btn-view-bank:hover {
+        background: var(--red-dark);
+      }
+      .btn-view-bank:active {
+        transform: scale(0.99);
+      }
+
+      .modal-summary {
+        background: #fdecea;
+        border-radius: 14px;
+        padding: 16px 18px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .modal-summary span {
+        display: block;
+      }
+      .modal-summary .summary-label {
+        font-size: 13px;
+        color: #888;
+        font-weight: 500;
+      }
+      .modal-summary .summary-value {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--red);
+      }
+
+      .bank-logo.gtb {
+        background: #004c97;
+      }
+
+      .bank-row-copy {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .bank-row-copy .bank-row-value {
+        min-width: 144px;
+      }
+
+      .bank-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .bank-row-label {
+        font-size: 12px;
+        color: #999;
+        font-weight: 500;
+      }
+
+      .bank-row-value {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1a1a1a;
+        word-break: break-all;
+      }
+
+      @media (max-width: 720px) {
+        .donate-wrapper {
+          padding: 24px 16px 60px;
+        }
+        .donate-card {
+          gap: 30px;
+          padding: 20px;
+        }
+        .hero {
+          padding: 40px 20px 30px;
+        }
+        .type-grid {
+          grid-template-columns: 1fr;
+        }
+        .amount-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .bank-card {
+          padding: 18px;
+        }
+        .modal {
+          max-width: 90%;
+          padding: 28px 22px 24px;
+        }
+        .modal-summary {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .bank-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* ── MODAL OVERLAY ── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(4px);
+        z-index: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 16px;
+        overflow-y: auto;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* ── MODAL BOX ── */
+      .modal {
+        background: #fff;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 460px;
+        max-height: calc(100dvh - 40px);
+        overflow-y: auto;
+        padding: 36px 36px 32px;
+        position: relative;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+        transform: translateY(20px) scale(0.97);
+        transition:
+          transform 0.28s cubic-bezier(0.34, 1.36, 0.64, 1),
+          opacity 0.25s;
+        opacity: 0;
+      }
+      .modal-overlay.open .modal {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        background: #f4f4f4;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.15s;
+      }
+      .modal-close:hover {
+        background: #e8e8e8;
+      }
+
+      .modal-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--red-light);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
+
+      .modal h2 {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+      .modal > p {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 24px;
+        line-height: 1.6;
+      }
+
+      .bank-card {
+        background: #f9f8f7;
+        border: 1px solid #eeeceb;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 12px;
+      }
+      .bank-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .bank-name-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .bank-logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .bank-label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #333;
+      }
+      .bank-sub {
+        font-size: 11px;
+        color: #999;
+      }
+
+      .bank-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .bank-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .bank-row-label {
+        font-size: 12px;
+        color: #999;
+        font-weight: 500;
+      }
+      .bank-row-value {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1a1a1a;
+      }
+
+      .copy-btn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 12px;
+        border: 1.5px solid #e0e0e0;
+        border-radius: 8px;
+        background: #fff;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        color: #555;
+        transition: all 0.15s;
+      }
+      .copy-btn:hover {
+        border-color: var(--red);
+        color: var(--red);
+      }
+      .copy-btn.copied {
+        border-color: #28a745;
+        color: #28a745;
+      }
+
+      .modal-note {
+        background: #fffbea;
+        border: 1px solid #f5e090;
+        border-radius: 10px;
+        padding: 14px 18px;
+        font-size: 14px;
+        color: #7a6000;
+        line-height: 1.45;
+        margin-top: 16px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+      }
+      .modal-note .note-text {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .modal-note strong {
+        font-weight: 800;
+        color: #6b4d00;
+        display: inline-block;
+        margin: 0 6px;
+      }
+
+      .modal-note svg {
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 720px) {
+        .modal-note {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .modal-note .note-text {
+          white-space: normal;
+        }
+      }
+
+      .modal-done {
+        width: 100%;
+        padding: 13px;
+        background: var(--red);
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background 0.2s;
+      }
+      .modal-done:hover {
+        background: var(--red-dark);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--footer-bg);
+        color: #fff;
+        padding: 60px 40px 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1.2fr 1.2fr 1.2fr;
+        gap: 50px;
+        padding-bottom: 48px;
+        max-width: 1320px;
+        margin: 0 auto;
+      }
+      .footer-brand {
+        padding-right: 20px;
+      }
+      .footer-brand .nav-logo {
+        color: #fff;
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+      .footer-brand .nav-logo img {
+        height: 36px;
+        width: auto;
+      }
+      .footer-brand p {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+        max-width: 280px;
+      }
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer-col h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 0.3px;
+      }
+      .footer-col ul {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .footer-col ul li {
+        margin-bottom: 0;
+      }
+      .footer-col ul li a {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.2s;
+      }
+      .footer-col ul li a:hover {
+        color: #fff;
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 14px;
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.5;
+      }
+      .footer-contact-item svg {
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+      .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.75);
+        transition: color 0.2s;
+      }
+      .social-link:hover {
+        color: #fff;
+      }
+      .social-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 18px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .footer-bottom p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .footer-bottom-links {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-bottom-links a {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .footer-bottom-links a:hover {
+        color: #fff;
+      }
+
+      /* ── FOOTER RESPONSIVE ── */
+      @media (min-width: 721px) and (max-width: 1024px) {
+        footer {
+          padding: 50px 30px 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 28px;
+        }
+      }
+      @media (max-width: 720px) {
+        footer {
+          padding: 40px 16px 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+          padding: 16px 0;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="nav.css" />
+    <script src="nav.js" defer></script>
+  </head>
+  <body>
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Make A Donation</h1>
+      <p>
+        Your generosity helps us continue our mission of transforming lives and
+        empowering communities across Port Harcourt.
+      </p>
+    </div>
+
+    <!-- DONATE FORM -->
+    <div class="donate-wrapper">
+      <div class="donate-card">
+        <!-- CURRENCY -->
+        <div class="donate-section">
+          <p class="field-label">Currency</p>
+          <div class="type-grid single-column">
+            <div class="type-option selected" data-currency="ngn">
+              <h4>Nigeria Naira</h4>
+              <p>For local donors in Nigeria</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DONATION TYPE -->
+        <div class="donate-section">
+          <p class="field-label">Donation Type</p>
+          <div class="type-grid">
+            <div class="type-option selected" data-type="onetime">
+              <h4>One-Time Donation</h4>
+              <p>Make a single contributions</p>
+            </div>
+            <div class="type-option" data-type="monthly">
+              <h4>Monthly Donations</h4>
+              <p>Sustain Our work with recurring support</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- AMOUNT -->
+        <div class="donate-section">
+          <p class="field-label">Select Amount (NGN)</p>
+          <div class="amount-grid">
+            <div class="amount-btn" data-amount="5000">₦5,000</div>
+            <div class="amount-btn selected" data-amount="10000">₦10,000</div>
+            <div class="amount-btn" data-amount="25000">₦25,000</div>
+            <div class="amount-btn" data-amount="50000">₦50,000</div>
+            <div class="amount-btn" data-amount="100000">₦100,000</div>
+            <div class="amount-btn" data-amount="250000">₦250,000</div>
+          </div>
+        </div>
+
+        <!-- YOUR INFORMATION -->
+        <div class="donate-section">
+          <p class="field-label">Your Information</p>
+          <div class="form-field">
+            <label>Full Name<span>*</span></label>
+            <input type="text" id="donorName" placeholder="Your Name" />
+          </div>
+          <div class="form-field">
+            <label>Email Address<span>*</span></label>
+            <input type="email" id="donorEmail" placeholder="Email Address" />
+          </div>
+
+          <!-- SUBMIT -->
+          <button class="btn-view-bank" id="viewBankBtn">
+            View Bank Details
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BANK DETAILS MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button class="modal-close" id="modalClose" aria-label="Close">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            stroke="#555"
+            stroke-width="2.5"
+            stroke-linecap="round"
+          >
+            <line x1="1" y1="1" x2="13" y2="13" />
+            <line x1="13" y1="1" x2="1" y2="13" />
+          </svg>
+        </button>
+
+        <div class="modal-icon">
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#ED3237"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="5" width="20" height="14" rx="2" />
+            <line x1="2" y1="10" x2="22" y2="10" />
+          </svg>
+        </div>
+
+        <h2 id="modalTitle">Bank Transfer Details</h2>
+        <p>
+          Transfer your donation to the account below, then send your receipt to
+          us on WhatsApp after payment.
+        </p>
+
+        <!-- Amount summary -->
+        <div class="modal-summary">
+          <span class="summary-label">Donation Amount</span>
+          <span class="summary-value" id="modalAmount">₦10,000</span>
+        </div>
+
+        <!-- Bank 1 -->
+        <div class="bank-card">
+          <div class="bank-card-top">
+            <div class="bank-name-badge">
+              <div class="bank-logo gtb">GTB</div>
+              <div>
+                <div class="bank-label">Guaranty Trust Bank</div>
+                <div class="bank-sub">GTBank</div>
+              </div>
+            </div>
+          </div>
+          <div class="bank-rows">
+            <div class="bank-row">
+              <span class="bank-row-label">Account Name</span>
+              <span class="bank-row-value">METRO PARLEZ-MENT CLUB</span>
+            </div>
+            <div class="bank-row">
+              <span class="bank-row-label">Account Number</span>
+              <div class="bank-row-copy">
+                <span class="bank-row-value" id="acct1">0039664041</span>
+                <button class="copy-btn" data-copy="0039664041">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                  >
+                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                    <path
+                      d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                    />
+                  </svg>
+                  Copy
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Note -->
+        <div class="modal-note">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#c8a000"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+          <div class="note-text">
+            After transferring, tap <strong>"I've Transferred"</strong> below to
+            send your proof of payment to us on <strong>WhatsApp</strong> with
+            your name and amount.
+          </div>
+        </div>
+
+        <button class="modal-done" id="modalDone">I've Transferred</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="color: #fff; margin-bottom: 14px">
+            <img
+              src="Asset/Footer Logo.png"
+              alt="Metro Parlez-Ment"
+              style="height: 36px; width: auto"
+            />
+          </div>
+          <p>
+            Transforming lives through humanitarian outreach, supporting
+            vulnerable communities with compassion and dedication.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.7)"
+              stroke-width="2"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Metroparlezment@Gmail.Com
+          </div>
+          <div class="footer-contact-item">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.7)"
+              stroke-width="2"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            +2348033260669
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Social Media</h4>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <div class="social-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </div>
+              Instagram
+            </a>
+            <a href="https://www.facebook.com/share/g/1DK2ty9PqH/" class="social-link" target="_blank" rel="noopener">
+              <div class="social-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </div>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Metro Parlez-ment 2026. All Rights Reserved</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms and Conditions</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ── Donation type toggles
+      document
+        .querySelectorAll(".donate-section .type-grid")
+        .forEach((grid) => {
+          grid.querySelectorAll(".type-option").forEach((opt) => {
+            opt.addEventListener("click", () => {
+              grid
+                .querySelectorAll(".type-option")
+                .forEach((o) => o.classList.remove("selected"));
+              opt.classList.add("selected");
+            });
+          });
+        });
+
+      // ── Amount preset selection
+      let selectedAmount = 10000;
+
+      document.querySelectorAll(".amount-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".amount-btn")
+            .forEach((b) => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          selectedAmount = parseInt(btn.dataset.amount);
+        });
+      });
+
+      // ── Format Naira
+      function formatNaira(n) {
+        return "₦" + Number(n).toLocaleString("en-NG");
+      }
+
+      // ── Open modal
+      document.getElementById("viewBankBtn").addEventListener("click", () => {
+        const name = document.getElementById("donorName").value.trim();
+        const email = document.getElementById("donorEmail").value.trim();
+        let valid = true;
+
+        [
+          document.getElementById("donorName"),
+          document.getElementById("donorEmail"),
+        ].forEach((el) => {
+          if (!el.value.trim()) {
+            el.style.borderColor = "#ED3237";
+            valid = false;
+          } else el.style.borderColor = "#dadbd6";
+        });
+
+        if (!valid) return;
+
+        document.getElementById("modalAmount").textContent =
+          formatNaira(selectedAmount);
+        document.getElementById("modalOverlay").classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
+
+      // ── Close modal
+      function closeModal() {
+        document.getElementById("modalOverlay").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      document
+        .getElementById("modalClose")
+        .addEventListener("click", closeModal);
+      document
+        .getElementById("modalDone")
+        .addEventListener("click", function () {
+          const amount = document.getElementById("modalAmount").textContent;
+          const text = encodeURIComponent(
+            `Hello, I have transferred ${amount} for the Metro Parlez-Ment donation. Please confirm receipt.`,
+          );
+          window.location.href = "https://wa.me/2348033260669?text=" + text;
+        });
+      document.getElementById("modalOverlay").addEventListener("click", (e) => {
+        if (e.target === e.currentTarget) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      // ── Copy account number
+      document.querySelectorAll(".copy-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          navigator.clipboard.writeText(btn.dataset.copy).then(() => {
+            const orig = btn.innerHTML;
+            btn.classList.add("copied");
+            btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
+            setTimeout(() => {
+              btn.classList.remove("copied");
+              btn.innerHTML = orig;
+            }, 2000);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

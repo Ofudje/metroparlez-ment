@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us — Metro Parlez-Ment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --red: #ed3237;
+        --red-dark: #be2929;
+        --footer-bg: #7b1818;
+        --radius: 8px;
+        --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: #1a1a1a;
+        background: #fff;
+      }
+      h1,
+      h2 {
+        font-family: "Playfair Display", Georgia, serif;
+        color: #020c0a;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        position: relative;
+        text-align: center;
+        padding: 64px 60px 56px;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 80% 120% at 50% 0%,
+          rgba(229, 53, 45, 0.18) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        pointer-events: none;
+      }
+      .hero h1,
+      .hero p {
+        opacity: 0;
+        transform: translateY(18px);
+        animation: hero-text-enter 1.2s ease-out forwards;
+      }
+      .hero h1 {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--red);
+        margin-bottom: 16px;
+        position: relative;
+        animation-delay: 0.18s;
+      }
+      .hero p {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.7;
+        max-width: 480px;
+        margin: 0 auto;
+        position: relative;
+        animation-delay: 0.38s;
+      }
+
+      @keyframes hero-text-enter {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── CONTACT INFO CARDS ── */
+      .info-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 0 60px 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .info-card {
+        border: 1px solid #dadbd6;
+        border-radius: 20px;
+        padding: 24px 18px;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+      }
+      .info-icon {
+        width: 72px;
+        height: 72px;
+        background: var(--red);
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .info-card h4 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .info-card p {
+        font-size: 14px;
+        color: #353d3b;
+        line-height: 1.5;
+      }
+
+      /* ── MAP + FORM ── */
+      .map-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        padding: 0 60px 80px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: start;
+      }
+
+      .map-container {
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid #dadbd6;
+        height: 540px;
+      }
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .contact-form-card {
+        background: #f6f7f2;
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+      .contact-form-card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 22px;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 16px;
+        border: 1px solid #dadbd6;
+        border-radius: 12px;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        color: #020c0a;
+        background: #fff;
+        outline: none;
+        transition: border-color 0.2s;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: #8e918c;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--red);
+      }
+
+      .select-wrap {
+        position: relative;
+      }
+      .select-wrap select {
+        cursor: pointer;
+        padding-right: 36px;
+      }
+      .select-wrap::after {
+        content: "";
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #888;
+        pointer-events: none;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 170px;
+      }
+
+      .btn-submit {
+        display: inline-block;
+        padding: 11px 28px;
+        background: var(--red);
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 6px;
+        transition: background 0.2s;
+      }
+      .btn-submit:hover {
+        background: var(--red-dark);
+      }
+
+      /* ── FAQ ── */
+      .faq-section {
+        background: #fff;
+        padding: 70px 60px 80px;
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: start;
+      }
+
+      .faq-left h2 {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--red);
+        margin-bottom: 14px;
+        line-height: 1.25;
+      }
+      .faq-left > p {
+        font-size: 15px;
+        color: #555;
+        line-height: 1.7;
+        margin-bottom: 28px;
+      }
+
+      .still-box {
+        border: 1px solid #e8e8e8;
+        border-radius: var(--radius);
+        padding: 22px 20px;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+      .still-icon {
+        width: 44px;
+        height: 44px;
+        background: #fde8e7;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 12px;
+      }
+      .still-box p {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .still-box span {
+        font-size: 13px;
+        color: #888;
+        display: block;
+        margin-bottom: 16px;
+      }
+      .btn-contact-us {
+        display: inline-block;
+        padding: 9px 24px;
+        background: var(--red);
+        color: #fff;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      .btn-contact-us:hover {
+        background: var(--red-dark);
+      }
+
+      /* Accordion */
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .faq-item {
+        border: 1px solid #e8e8e8;
+        border-radius: var(--radius);
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px;
+        background: #fff;
+        border: none;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1a1a1a;
+        text-align: left;
+        transition: background 0.15s;
+      }
+      .faq-question:hover {
+        background: #fafafa;
+      }
+      .faq-question.open {
+        background: #fff;
+      }
+
+      .faq-chevron {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 1.5px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          transform 0.25s,
+          border-color 0.2s;
+      }
+      .faq-question.open .faq-chevron {
+        transform: rotate(180deg);
+        border-color: var(--red);
+      }
+      .faq-chevron svg {
+        display: block;
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.3s ease,
+          padding 0.2s;
+        padding: 0 20px;
+        font-size: 14px;
+        color: #555;
+        line-height: 1.75;
+      }
+      .faq-answer.open {
+        max-height: 500px;
+        padding: 0 20px 18px;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--footer-bg);
+        color: #fff;
+        padding: 60px 40px 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1.2fr 1.2fr 1.2fr;
+        gap: 50px;
+        padding-bottom: 48px;
+        max-width: 1320px;
+        margin: 0 auto;
+      }
+      .footer-brand {
+        padding-right: 20px;
+      }
+      .footer-brand .nav-logo {
+        color: #fff;
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+      .footer-brand .nav-logo img {
+        height: 36px;
+        width: auto;
+      }
+      .footer-brand p {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+        max-width: 280px;
+      }
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer-col h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 0.3px;
+      }
+      .footer-col ul {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .footer-col ul li {
+        margin-bottom: 0;
+      }
+      .footer-col ul li a {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.2s;
+      }
+      .footer-col ul li a:hover {
+        color: #fff;
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 14px;
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.5;
+      }
+      .footer-contact-item svg {
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+      .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.75);
+        transition: color 0.2s;
+      }
+      .social-link:hover {
+        color: #fff;
+      }
+      .social-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 18px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .footer-bottom p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .footer-bottom-links {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-bottom-links a {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .footer-bottom-links a:hover {
+        color: #fff;
+      }
+      /* ── TABLET (769px – 1024px) ── */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .hero {
+          padding: 52px 30px 44px;
+        }
+        .hero h1 {
+          font-size: 42px;
+        }
+        .info-cards {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 0 30px 50px;
+        }
+        .map-form {
+          padding: 0 30px 60px;
+          gap: 28px;
+        }
+        .faq-section {
+          padding: 60px 30px 70px;
+          gap: 36px;
+        }
+        footer {
+          padding: 50px 30px 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 28px;
+        }
+      }
+
+      /* ── MOBILE (≤ 768px) — stacks all large grids ── */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 40px 16px 32px;
+        }
+        .hero h1 {
+          font-size: 32px;
+        }
+        .hero p {
+          font-size: 14px;
+        }
+        .map-form,
+        .faq-section,
+        .info-cards {
+          grid-template-columns: 1fr !important;
+          padding: 0 16px 30px !important;
+          gap: 20px !important;
+        }
+        .map-container {
+          height: auto;
+          min-height: 260px;
+        }
+        .faq-left h2 {
+          font-size: 26px;
+        }
+        footer {
+          padding: 40px 16px 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+          padding: 16px 0;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="nav.css" />
+    <script src="nav.js" defer></script>
+  </head>
+  <body>
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Get In Touch</h1>
+      <p>
+        We're here to listen. Reach out with questions, ideas, or how you'd like
+        to help.
+      </p>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-icon">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+        <div>
+          <h4>Office Address</h4>
+          <p>No. 8 General Diriayi Street, GRA, Port Harcourt</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+            />
+          </svg>
+        </div>
+        <div>
+          <h4>Phone Numbers</h4>
+          <p>+2348033260669</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+        </div>
+        <div>
+          <h4>Office Hours</h4>
+          <p>Always Open</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </div>
+        <div>
+          <h4>Email Address</h4>
+          <p>Metroparlezment@Gmail.Com</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAP + FORM -->
+    <div class="map-form">
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126091.17884999538!2d6.966139!3d4.8241915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cda0e5b3f4d3%3A0x53ebc6d7d9b5c7d0!2sPort%20Harcourt%2C%20Rivers%20State%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1700000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </div>
+
+      <div class="contact-form-card">
+        <h3>Get In Touch</h3>
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" />
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email Address" />
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="Address" />
+          <div class="select-wrap">
+            <select>
+              <option value="" disabled selected>Occupation</option>
+              <option>Student</option>
+              <option>Professional</option>
+              <option>Business Owner</option>
+              <option>Retired</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Type Your Message"></textarea>
+        </div>
+        <button class="btn-submit" id="contactSubmit">Send a Message</button>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div style="padding: 0 60px 80px; max-width: 1200px; margin: 0 auto">
+      <div class="faq-section" style="padding: 0; max-width: 100%">
+        <div class="faq-left">
+          <h2>Frequently Ask Questions</h2>
+          <p>Quick answers to common questions about our organization</p>
+          <div class="still-box">
+            <div class="still-icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ED3237"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+            </div>
+            <p>Still got questions?</p>
+            <span>Get The answers You need quickly</span>
+            <a href="mailto:Metroparlezment@Gmail.Com" class="btn-contact-us"
+              >Contact Us
+              <svg
+                class="icon-arrow"
+                width="14"
+                height="14"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"
+                /></svg
+            ></a>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question open" data-target="faq1">
+              How can I volunteer with Metro Parlezment Club?
+              <span class="faq-chevron">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  stroke="#ED3237"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <polyline points="2,3 5,7 8,3" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer open" id="faq1">
+              Visit our Get Involved page and fill out the volunteer
+              registration form. Our team will contact you with available
+              opportunities that match your interests and availability.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" data-target="faq2">
+              Can I donate items instead of money?
+              <span class="faq-chevron">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  stroke="#666"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <polyline points="2,3 5,7 8,3" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq2">
+              Yes! We accept donations of foodstuff, clothing, educational
+              materials, medical supplies, and other essential items. Contact us
+              to arrange a drop-off or delivery.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" data-target="faq3">
+              Are donations tax-deductible?
+              <span class="faq-chevron">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  stroke="#666"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <polyline points="2,3 5,7 8,3" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq3">
+              Metro Parlez-ment is a registered non-profit organization. Please
+              consult with your tax advisor or contact us for documentation that
+              may support your tax filings.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" data-target="faq4">
+              How do I apply for your scholarship program?
+              <span class="faq-chevron">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  stroke="#666"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <polyline points="2,3 5,7 8,3" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq4">
+              Scholarship applications are reviewed periodically. Send an email
+              to Metroparlezment@Gmail.Com with the subject "Scholarship
+              Application" along with your details and academic information.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="color: #fff; margin-bottom: 14px">
+            <img
+              src="Asset/Footer Logo.png"
+              alt="Metro Parlez-Ment"
+              style="height: 36px; width: auto"
+            />
+          </div>
+          <p>
+            Transforming lives through humanitarian outreach, supporting
+            vulnerable communities with compassion and dedication.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.7)"
+              stroke-width="2"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Metroparlezment@Gmail.Com
+          </div>
+          <div class="footer-contact-item">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.7)"
+              stroke-width="2"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            +2348033260669
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Social Media</h4>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <div class="social-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </div>
+              Instagram
+            </a>
+            <a href="https://www.facebook.com/share/g/1DK2ty9PqH/" class="social-link" target="_blank" rel="noopener">
+              <div class="social-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </div>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Metro Parlez-ment 2026. All Rights Reserved</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms and Conditions</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // FAQ accordion
+      document.querySelectorAll(".faq-question").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const answer = document.getElementById(btn.dataset.target);
+          const isOpen = btn.classList.contains("open");
+
+          // close all
+          document.querySelectorAll(".faq-question").forEach((b) => {
+            b.classList.remove("open");
+            const svg = b.querySelector(".faq-chevron svg polyline");
+            if (svg) svg.setAttribute("stroke", "#666");
+          });
+          document
+            .querySelectorAll(".faq-answer")
+            .forEach((a) => a.classList.remove("open"));
+
+          // open clicked if it was closed
+          if (!isOpen) {
+            btn.classList.add("open");
+            answer.classList.add("open");
+            const svg = btn.querySelector(".faq-chevron svg polyline");
+            if (svg) svg.setAttribute("stroke", "#ED3237");
+          }
+        });
+      });
+
+      // Contact form submit -> opens a pre-filled Gmail compose
+      document
+        .getElementById("contactSubmit")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          const card = this.closest(".contact-form-card");
+          const nameEl = card.querySelector('input[placeholder="Your Name"]');
+          const emailEl = card.querySelector(
+            'input[placeholder="Email Address"]',
+          );
+          const addressEl = card.querySelector('input[placeholder="Address"]');
+          const occupationEl = card.querySelector("select");
+          const messageEl = card.querySelector(
+            'textarea[placeholder="Type Your Message"]',
+          );
+          const inputs = [nameEl, emailEl, addressEl, occupationEl, messageEl];
+
+          let valid = true;
+          inputs.forEach((el) => {
+            if (!el || !el.value.trim()) {
+              if (el) el.style.borderColor = "#ED3237";
+              valid = false;
+            } else el.style.borderColor = "#dadbd6";
+          });
+          if (!valid) return;
+
+          const subject = encodeURIComponent(
+            `Contact Message from ${nameEl.value.trim()}`,
+          );
+          const body = encodeURIComponent(
+            `Name: ${nameEl.value.trim()}\nEmail: ${emailEl.value.trim()}\nAddress: ${addressEl.value.trim()}\nOccupation: ${occupationEl.value.trim()}\n\nMessage:\n${messageEl.value.trim()}`,
+          );
+          const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=metroparlezment@gmail.com&su=${subject}&body=${body}`;
+          window.open(gmailUrl, "_blank");
+
+          this.textContent = "Message Sent!";
+          this.style.background = "#28a745";
+          setTimeout(() => {
+            this.textContent = "Send a Message";
+            this.style.background = "";
+            inputs.forEach((el) => {
+              if (!el) return;
+              if (el.tagName.toLowerCase() === "select") el.selectedIndex = 0;
+              else el.value = "";
+            });
+          }, 3000);
+        });
+    </script>
+  </body>
+</html>

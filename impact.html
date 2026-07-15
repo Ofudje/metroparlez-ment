@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impact — Metro Parlez-Ment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --red: #ed3237;
+        --red-dark: #be2929;
+        --footer-bg: #7b1818;
+        --radius: 8px;
+        --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: #1a1a1a;
+        background: #fff;
+      }
+      h1,
+      h2 {
+        font-family: "Playfair Display", Georgia, serif;
+        color: #020c0a;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* ── NAVBAR ── */
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        position: relative;
+        text-align: center;
+        padding: 64px 60px 56px;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 100% at 50% 0%,
+          rgba(229, 53, 45, 0.18) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        pointer-events: none;
+      }
+      .hero h1 {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--red);
+        margin-bottom: 16px;
+        position: relative;
+      }
+      .hero p {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.7;
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      /* ── FILTER TABS ── */
+      .filter-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 0 60px 40px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 22px;
+        border-radius: 24px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        background: #f5f4f2;
+        border: 1.5px solid #e0ddd8;
+        color: #444;
+        transition: all 0.2s;
+      }
+      .filter-btn:hover {
+        border-color: #bbb;
+      }
+      .filter-btn.active {
+        background: var(--red);
+        border-color: var(--red);
+        color: #fff;
+        font-weight: 600;
+      }
+
+      /* ── CARDS GRID ── */
+      .cards-container {
+        padding: 0 60px 80px;
+      }
+      .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .impact-card {
+        border: 1px solid #e8e8e8;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        background: #fff;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .impact-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-img {
+        width: 100%;
+        height: 210px;
+        overflow: hidden;
+        background: #ddd;
+      }
+      .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .card-img-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card-body {
+        padding: 16px 18px 18px;
+      }
+
+      .card-body h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        line-height: 1.4;
+      }
+
+      .card-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+      .card-meta-row {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 13px;
+        color: #666;
+      }
+      .card-meta-row svg,
+      .card-meta-row img {
+        flex-shrink: 0;
+        width: 13px;
+        height: 13px;
+        display: inline-block;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+
+      .card-body p {
+        font-size: 13px;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* hidden cards */
+      .impact-card.hidden {
+        display: none;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--footer-bg);
+        color: #fff;
+        padding: 60px 40px 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1.2fr 1.2fr 1.2fr;
+        gap: 50px;
+        padding-bottom: 48px;
+        max-width: 1320px;
+        margin: 0 auto;
+      }
+      .footer-brand .nav-logo {
+        color: #fff;
+        margin-bottom: 14px;
+      }
+      .footer-brand p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        max-width: 240px;
+      }
+      .footer-col h4 {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 18px;
+        color: #fff;
+      }
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+      .footer-col ul li a {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.75);
+        transition: color 0.2s;
+      }
+      .footer-col ul li a:hover {
+        color: #fff;
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 12px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .footer-contact-item svg {
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+      .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.75);
+        transition: color 0.2s;
+      }
+      .social-link:hover {
+        color: #fff;
+      }
+      .social-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 18px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .footer-bottom p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .footer-bottom-links {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-bottom-links a {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .footer-bottom-links a:hover {
+        color: #fff;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .hero {
+          padding: 52px 30px 44px;
+        }
+        .hero h1 {
+          font-size: 42px;
+        }
+        .filter-bar {
+          padding: 0 30px 36px;
+        }
+        .cards-container {
+          padding: 0 30px 70px;
+        }
+        footer {
+          padding: 50px 30px 0;
+        }
+      }
+      @media (max-width: 768px) {
+        .hero {
+          padding: 40px 16px 32px;
+        }
+        .hero h1 {
+          font-size: 34px;
+        }
+        .hero p {
+          font-size: 14px;
+        }
+        .filter-bar {
+          padding: 0 16px 28px;
+          gap: 8px;
+        }
+        .filter-btn {
+          padding: 7px 16px;
+          font-size: 13px;
+        }
+        .cards-container {
+          padding: 0 16px 60px;
+        }
+        .cards-grid {
+          grid-template-columns: 1fr;
+        }
+        footer {
+          padding: 40px 16px 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+          padding: 16px 0;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="nav.css" />
+    <script src="nav.js" defer></script>
+  </head>
+  <body>
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Impact</h1>
+      <p>
+        Metro Parlezment transforms lives through education, healthcare, and
+        humanitarian support across Port Harcourt
+      </p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="medical">Medical</button>
+      <button class="filter-btn" data-filter="school">School</button>
+      <button class="filter-btn" data-filter="orphanage">Orphanage</button>
+      <button class="filter-btn" data-filter="others">others</button>
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards-container">
+      <div class="cards-grid" id="cardsGrid"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="color: #fff; margin-bottom: 14px">
+            <img
+              src="Asset/Footer Logo.png"
+              alt="Metro Parlez-Ment"
+              style="height: 36px; width: auto"
+            />
+          </div>
+          <p>
+            Transforming lives through humanitarian outreach, supporting
+            vulnerable communities with compassion and dedication.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="index.html#involved">Get Involved</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.7)"
+              stroke-width="2"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Metroparlezment@Gmail.Com
+          </div>
+          <div class="footer-contact-item">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.7)"
+              stroke-width="2"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            +2348033260669
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Social Media</h4>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <div class="social-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </div>
+              Instagram
+            </a>
+            <a href="https://www.facebook.com/share/g/1DK2ty9PqH/" class="social-link" target="_blank" rel="noopener">
+              <div class="social-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </div>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Metro Parlez-ment 2026. All Rights Reserved</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms and Conditions</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ── SVG placeholder colours per category
+      const colours = {
+        medical: ["#b8d4e8", "#7aa4c4"],
+        school: ["#c4d4b8", "#7aa47a"],
+        orphanage: ["#e8d4b8", "#c4946a"],
+        others: ["#d4b8e8", "#9a6ac4"],
+      };
+
+      function placeholder(cat, label) {
+        const [c1, c2] = colours[cat] || ["#ddd", "#aaa"];
+        return `<div class="card-img-placeholder" style="background:linear-gradient(135deg,${c1},${c2});">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+          <rect width="60" height="60" rx="8" fill="rgba(255,255,255,0.15)"/>
+          <text x="30" y="36" font-family="sans-serif" font-size="10" fill="rgba(255,255,255,0.7)" text-anchor="middle">${label}</text>
+        </svg>
+      </div>`;
+      }
+
+      const calIcon = `<img loading="lazy" decoding="async" src="Asset/Icon/calendar_month_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" width="13" height="13" alt="date" />`;
+      const pinIcon = `<img loading="lazy" decoding="async" src="Asset/Icon/location_on_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" width="13" height="13" alt="location" />`;
+
+      // ── All impact data
+      const items = [
+        // MEDICAL
+        {
+          cat: "medical",
+          title: "2nd Quarter, Visit to Children's ward UPTH",
+          date: "February 15, 2009",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Giving of cash Donations and other equipment to the children ward",
+          img: "Asset/Impact medical/2nd Quarter, Visit to Children's ward UPTH.jpg",
+        },
+        {
+          cat: "medical",
+          title: "3rd Quarter, Visit to Eye Clinic UPTH",
+          date: "February 15, 2009",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Paying of bills and eye surgery of indigent persons",
+          img: "Asset/Impact medical/3rd Quarter, Visit to Eye Clinic UPTH.jpg",
+        },
+
+        {
+          cat: "medical",
+          title: "3rd Quarter; Visit to Eye Clinic UPTH.",
+          date: "February 15, 2009",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Paying of bills and eye surgery of indigent persons",
+          img: "Asset/Impact medical/3rd Quarter; Visit to Eye Clinic UPTH..jpg",
+        },
+        {
+          cat: "medical",
+          title: "Hernia Surgery for Mr. Teddy",
+          date: "January, 2010",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Provision Of medical Support to one of our Staff",
+          img: "Asset/Impact medical/Hernia Surgery for Mr. Teddy.jpg",
+        },
+        {
+          cat: "medical",
+          title: "Free Eye Check/treatment/glasses to 50 Persons",
+          date: "July, 2016",
+          location: "Eligbam, Rivers state",
+          desc: "Giving of free eye glasses and eye surgery of indigent persons",
+          img: "Asset/Impact medical/glasses to 50 Persons.jpg",
+        },
+        {
+          cat: "medical",
+          title: "Free Eye Check/treatment/glasses to 50 Persons",
+          date: "July, 2016",
+          location: "Eligbam, Rivers state",
+          desc: "Giving of free eye glasses and eye surgery of indigent persons",
+          img: "Asset/Impact medical/glasses to 50 Persons 2.jpg",
+        },
+        {
+          cat: "medical",
+          title: "University Of Port Harcourt Teaching Hospital",
+          date: "February 15, 2025",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Paying Of Indigent Persons Hospitals Bill At UPTH",
+          img: "Asset/Impact medical/University Of Port Harcourt Teaching Hospital.jpg",
+        },
+        {
+          cat: "medical",
+          title: "Visit to the Pediatric Department UPTH",
+          date: "June, 2025",
+          location: "Port Harcourt city, Rivers State",
+          desc: "3rd Quarter Charity Presentation to the Pediatric Department of UPTH.",
+          img: "Asset/Impact medical/Visit to the Pediatric Department UPTH.jpg",
+        },
+        {
+          cat: "medical",
+          title: "Visit to the Rivers State University Teaching Hospital",
+          date: "June, 2025",
+          location: "Port Harcourt city, Rivers State",
+          desc: "3rd Quarter Charity Presentation to the Pediatric Department of UPTH.",
+          img: "Asset/Impact medical/2nd Quarter, Visit to Children's ward UPTH 2.jpg",
+        },
+
+        // SCHOOL
+        {
+          cat: "school",
+          title: "Holy Spirit Catholic School.",
+          date: "February 15, 2011",
+          location: "Benin City, Edo state",
+          desc: "Equipping Of Computer Classroom for the children.",
+          img: "Asset/impact school/Rectangle 2.jpg",
+        },
+        {
+          cat: "school",
+          title: "Holy Spirit Catholic School.",
+          date: "February 15, 2009",
+          location: "Benin City, Edo state",
+          desc: "Equipping Of Computer Classroom for the children.",
+          img: "Asset/impact school/Rectangle 3.jpg",
+        },
+        {
+          cat: "school",
+          title: "Holy Spirit Catholic School.",
+          date: "February 15, 2011",
+          location: "Benin City, Edo state",
+          desc: "Equipping Of Computer Classroom for the children.",
+          img: "Asset/impact school/Rectangle 4.jpg",
+        },
+        {
+          cat: "school",
+          title: "Holy Spirit Catholic School.",
+          date: "February 15, 2011",
+          location: "Benin City, Edo state",
+          desc: "Equipping Of Computer Classroom for the children.",
+          img: "Asset/impact school/Rectangle 5.jpg",
+        },
+        {
+          cat: "school",
+          title: "Holy Spirit Catholic School.",
+          date: "February 15, 2011",
+          location: "Benin City, Edo state",
+          desc: "Equipping Of Computer Classroom for the children.",
+          img: "Asset/impact school/Rectangle 6.jpg",
+        },
+
+        // ORPHANAGE
+        {
+          cat: "orphanage",
+          title: "PH Children's Home, Borokiri",
+          date: "December, 2007",
+          location: "Port Harcourt city, Rivers state",
+          desc: "Donation of Foodstuff & provisions worth of 170k to the children",
+          img: "Asset/impact orphanage/Ph childrens home borokiri 2007.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "PH Children's Home, Borokiri",
+          date: "December, 2007",
+          location: "Port Harcourt city, Rivers state",
+          desc: "Donation of Foodstuff & provisions worth of 170k to the children",
+          img: "Asset/impact orphanage/Ph childrens home borokiri 2007 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "PH Children's Home, Borokiri",
+          date: "December, 2007",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donations of Foodstuff & provisions worth 170k to the children",
+          img: "Asset/impact orphanage/Ph childrens home borokiri 2007 3.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "PH Children's Home, Borokiri",
+          date: "December, 2007",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donations of Foodstuff & provisions worth 170k to the children",
+          img: "Asset/impact orphanage/Ph childrens home borokiri 2007 4.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "PH Children's Home, Borokiri",
+          date: "December, 2008",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of Foodstuff & provisions worth  125k to the children",
+          img: "Asset/impact orphanage/PH Children's Home, Borokiri 2008 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "PH Children's Home, Borokiri",
+          date: "December, 2008",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of Foodstuff & provisions worth  125k to the children",
+          img: "Asset/impact orphanage/PH Children's Home, Borokiri 1.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "2nd Quarter Visit to Adventist Home",
+          date: "June, 2009",
+          location: "Edeoha, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/2nd Quarter Visit to Adventist Home 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "2nd Quarter Visit to Adventist Home",
+          date: "June, 2009",
+          location: "Edeoha, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/2nd Quarter Visit to Adventist Home 1.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Visit to Jarrell Kids Home",
+          date: "December, 2009",
+          location: "Rumuokwuta, Port Harcourt city, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the home",
+          img: "Asset/impact orphanage/Jarrell Kids Home.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Visit to Jarrell Kids Home",
+          date: "December, 2009",
+          location: "Rumuokwuta, Port Harcourt city, Rivers state",
+          desc: "Donations of foodstuff and other stationeries to the children",
+          img: "Asset/impact orphanage/Jarrell Kids Home 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Visit to Jarrell Kids Home",
+          date: "December, 2009",
+          location: "Rumuokwuta, Port Harcourt city, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Jarrell Kids Home 3.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Visit to Destiny Child Home",
+          date: "December, 2009",
+          location: "Etche, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/4th Quarter Visit to Destiny Child Home 1.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Visit to Destiny Child Home",
+          date: "December, 2009",
+          location: "Etche, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/4th Quarter Visit to Destiny Child Home 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Visit to Destiny Child Home",
+          date: "December, 2009",
+          location: "Etche, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/4th Quarter Visit to Destiny Child Home 3.jpg",
+        },
+
+        {
+          cat: "orphanage",
+          title: "1st Quarter Visit to PH Children Home",
+          date: "February, 2012",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/1st Quarter Visit to PH Children Home 1.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "1st Quarter Visit to PH Children Home",
+          date: "February, 2012",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/1st Quarter Visit to PH Children Home 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Our Saviour's Home, Rumuokoro",
+          date: "May, 2013",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to Our Saviour's Home, Rumuokoro.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Our Saviour's Home, Rumuokoro",
+          date: "May, 2013",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to Our Saviour's Home, Rumuokoro 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Azibaola Charity Foundation, Amadi-Ama",
+          date: "August, 2013",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to Azibaola Charity Foundation, Amadi-Ama.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Charity Visit to St. Anne Orphanage Home",
+          date: "November, 2013",
+          location: "Warri, Delta State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/4th Quarter Charity Visit to St. Anne Orphanage Home.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Charity Visit to St. Anne Orphanage Home",
+          date: "November, 2013",
+          location: "Warri, Delta State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/4th Quarter Charity Visit to St. Anne Orphanage Home 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "1st Quarter Visit to Lifetime Caring Foundation Home, Woji ",
+          date: "January, 2014",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/1st Quarter Visit to Lifetime Caring Foundation Home, Woji.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "1st Quarter Visit to Lifetime Caring Foundation Home, Woji ",
+          date: "January, 2014",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/1st Quarter Visit to Lifetime Caring Foundation Home, Woji  2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Lifetime Caring Foundation Home, Woji ",
+          date: "January, 2014",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to Lifetime Caring Foundation Home, Woji.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Lifetime Caring Foundation Home, Woji ",
+          date: "January, 2014",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to Lifetime Caring Foundation Home, Woji  2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "2nd Quarter Visit to Oasis of Love Orphanage, Iriebe.",
+          date: "April, 2014",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/2nd Quarter Visit to Oasis of Love Orphanage, Iriebe..jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "2nd Quarter Visit to Oasis of Love Orphanage, Iriebe.",
+          date: "April, 2014",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/2nd Quarter Visit to Oasis of Love Orphanage, Iriebe.2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Visit to Holy Child motherless babies Home",
+          date: "December, 2014",
+          location: "Enugu, EnuguState",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/4th Quarter Visit to Holy Child motherless babies Home.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Visit to Holy Child motherless babies Home",
+          date: "December, 2014",
+          location: "Enugu, EnuguState",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/4th Quarter Visit to Holy Child motherless babies Home 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Visit to Holy Child motherless babies Home",
+          date: "December, 2014",
+          location: "Enugu, EnuguState",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/4th Quarter Visit to Holy Child motherless babies Home 3.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "PH Children's Home, Borokiri",
+          date: "June, 2015",
+          location: "Port Harcourt, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/PH Children's Home, Borokiri 2015.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "PH Children's Home, Borokiri",
+          date: "June, 2015",
+          location: "Port Harcourt, Rivers State",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/PH Children's Home, Borokiri 2015 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Motherless babies Home, Mkpok",
+          date: "November, 2016",
+          location: "Onna, Akwa Ibom State",
+          desc: "Opening of a new building for the children and donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to Motherless babies Home, Mkpok.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Motherless babies Home, Mkpok",
+          date: "November, 2016",
+          location: "Onna, Akwa Ibom State",
+          desc: "Opening of a new building for the children and donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to Motherless babies Home, Mkpok 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Motherless babies Home, Mkpok",
+          date: "November, 2016",
+          location: "Onna, Akwa Ibom State",
+          desc: "Opening of a new building for the children and donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to Motherless babies Home, Mkpok 3.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Badamia Association Home for Children",
+          date: "February, 2nd 2020",
+          location: "Afikpo Ebonyi State.",
+          desc: "Thank you gift from Badamia Association Home of Children.",
+          img: "Asset/impact orphanage/Visit to Badamia Association Home for Children.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Badamia Association Home for Children",
+          date: "February, 2nd 2020",
+          location: "Afikpo Ebonyi State.",
+          desc: "Thank you gift from Badamia Association Home of Children.",
+          img: "Asset/impact orphanage/Visit to Badamia Association Home for Children 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to Badamia Association Home for Children",
+          date: "February, 2nd 2020",
+          location: "Afikpo Ebonyi State.",
+          desc: "Thank you gift from Badamia Association Home of Children.",
+          img: "Asset/impact orphanage/Visit to Badamia Association Home for Children 3.jpg",
+        },
+
+        {
+          cat: "orphanage",
+          title:
+            "Metro-Parlezment Club reached out to Eligbam and Orazi Community widows",
+          date: "April, 18th 2020",
+          location: "Port Harcourt, Rivers State.",
+          desc: "Distribution Of Food items to the windows of Eligbam and Orazi Community at the clubhouse",
+          img: "Asset/impact orphanage/Metro-Parlezment Club reached out to Eligbam and Orazi Community widows.jpg",
+        },
+        {
+          cat: "orphanage",
+          title:
+            "Metro-Parlezment Club reached out to Eligbam and Orazi Community widows",
+          date: "April, 18th 2020",
+          location: "Port Harcourt, Rivers State.",
+          desc: "Distribution Of Food items to the windows of Eligbam and Orazi Community at the clubhouse",
+          img: "Asset/impact orphanage/Metro-Parlezment Club reached out to Eligbam and Orazi Community widows 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title:
+            "Metro-Parlezment Club reached out to Eligbam and Orazi Community widows",
+          date: "April, 18th 2020",
+          location: "Port Harcourt, Rivers State.",
+          desc: "Distribution Of Food items to the windows of Eligbam and Orazi Community at the clubhouse",
+          img: "Asset/impact orphanage/Metro-Parlezment Club reached out to Eligbam and Orazi Community widows 3.jpg",
+        },
+        {
+          cat: "orphanage",
+          title:
+            "The Metro-Parlezment Club Visited the Rosalie Home Rehabilitation Center",
+          date: "August, 14th 2021",
+          location: "Ogale-Nchia Eleme, Rivers State ",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/The Metro-Parlezment Club Visited the Rosalie Home Rehabilitation Center.jpg",
+        },
+        {
+          cat: "orphanage",
+          title:
+            "The Metro-Parlezment Club Visited the Rosalie Home Rehabilitation Center",
+          date: "August, 14th 2021",
+          location: "Ogale-Nchia Eleme, Rivers State ",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/The Metro-Parlezment Club Visited the Rosalie Home Rehabilitation Center 2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title:
+            "Metro-Parlezment Club in Partnership with Chimdi Memorial Foundation",
+          date: "August, 14th 2021",
+          location: "Port Harcourt, Rivers State ",
+          desc: "This was the second outreach in our fight against Cerebral Palsy resulting from Child Birth Complications.",
+          img: "Asset/impact orphanage/Metro-Parlezment Club in Partnership with Chimdi Memorial Foundation.jpg",
+        },
+        {
+          cat: "orphanage",
+          title:
+            "Metro-Parlezment Club in Partnership with Chimdi Memorial Foundation",
+          date: "August, 14th 2021",
+          location: "Port Harcourt, Rivers State ",
+          desc: "This was the second outreach in our fight against Cerebral Palsy resulting from Child Birth Complications.",
+          img: "Asset/impact orphanage/Metro-Parlezment Club in Partnership with Chimdi Memorial Foundation2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title:
+            "Metro-Parlezment Club in Partnership with Chimdi Memorial Foundation",
+          date: "August, 14th 2021",
+          location: "Port Harcourt, Rivers State ",
+          desc: "This was the second outreach in our fight against Cerebral Palsy resulting from Child Birth Complications.",
+          img: "Asset/impact orphanage/Metro-Parlezment Club in Partnership with Chimdi Memorial Foundation 3.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to our Lady of Perpetual Help. ",
+          date: "August, 2021",
+          location: "Omagwa, Port Harcourt, Rivers State ",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to our Lady of Perpetual Help..jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "Visit to our Lady of Perpetual Help. ",
+          date: "April,2023",
+          location: "Omagwa, Port Harcourt, Rivers State ",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to our Lady of Perpetual Help.  2.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Charity visit to Seventh Day Adventist Church,  ",
+          date: "December, 2014",
+          location: "Somewhere",
+          desc: "Charity visit",
+          img: "Asset/impact orphanage/4th Quarter Charity visit to Seventh Day Adventist Church,.jpg",
+        },
+        {
+          cat: "orphanage",
+          title: "4th Quarter Charity visit to Seventh Day Adventist Church,  ",
+          date: "November, 14th 2025",
+          location: "Aba, Abia State ",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact orphanage/Visit to Badamia Association Home for Children 4.jpg",
+        },
+
+        // OTHERS
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "November, 2007",
+          location: "Haryon Hotel Uyo, Akwa Ibom State",
+          desc: "Annual General Meeting",
+          img: "Asset/impact others/Members & Guests At AGM.jpg",
+        },
+        {
+          cat: "others",
+          title: "PH Compassion Home, Nkpogu.",
+          date: "February 15, 2008",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of 3 wheelchairs & ¾ crutches + cash(₦385k)",
+          img: "Asset/impact others/PH Compassion Home, Nkpogu..jpg",
+        },
+        {
+          cat: "others",
+          title: "PH Compassion Home, Nkpogu.",
+          date: "February 15, 2008",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of 3 wheelchairs & ¾ crutches + cash(₦385k)",
+          img: "Asset/impact others/PH Compassion Home, Nkpogu. 2.jpg",
+        },
+        {
+          cat: "others",
+          title: "PH Compassion Home, Nkpogu.",
+          date: "February 15, 2008",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donation of 3 wheelchairs & ¾ crutches + cash(₦385k)",
+          img: "Asset/impact others/PH Compassion Home, Nkpogu. 3.jpg",
+        },
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "October, 2016",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Annual Get Together meeting",
+          img: "Asset/impact others/Members & Guests At AGM 2016.jpg",
+        },
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "October, 2016",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Annual Get Together meeting",
+          img: "Asset/impact others/Members & Guests At AGM.jpg",
+        },
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "November, 2008",
+          location: "Lira Hotel Owerri, Imo State",
+          desc: "Annual General Meeting",
+          img: "Asset/impact others/Members & Guests At AGM 2008.jpg",
+        },
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "11th November, 2011",
+          location: "Hilton Gate Hotel, Benin City, Edo State",
+          desc: "Annual General Meeting",
+          img: "Asset/impact others/Members & Guests At AGM 2011.jpg",
+        },
+        {
+          cat: "others",
+          title: "2nd Quarter Visit To Old Peoples Home",
+          date: "June 15, 2010",
+          location: "Port Harcourt city, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the home",
+          img: "Asset/impact others/2nd Quarter Visit To Old Peoples Home.jpg",
+        },
+        {
+          cat: "others",
+          title: "2nd Quarter Visit To Old Peoples Home",
+          date: "June 15, 2010",
+          location: "Port Harcourt city, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the home",
+          img: "Asset/impact others/2nd Quarter Visit To Old Peoples Home 2.jpg",
+        },
+        {
+          cat: "others",
+          title: "2nd Quarter Visit To Old Peoples Home",
+          date: "June 15, 2010",
+          location: "Port Harcourt city, Rivers state",
+          desc: "Donation of foodstuff and other provisions to the home",
+          img: "Asset/impact others/2nd Quarter Visit To Old Peoples Home 3.jpg",
+        },
+        {
+          cat: "others",
+          title: "Visit to Akwa Ibom State Special Children's Center",
+          date: "November, 2013",
+          location: "Uyo, Akwa Ibom",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact others/Visit to Akwa Ibom State Special Children's Center.jpg",
+        },
+        {
+          cat: "others",
+          title: "Visit to Akwa Ibom State Special Children's Center",
+          date: "November, 2013",
+          location: "Uyo, Akwa Ibom",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact others/Visit to Akwa Ibom State Special Children's Center 2.jpg",
+        },
+        {
+          cat: "others",
+          title: "Visit to Akwa Ibom State Special Children's Center",
+          date: "November, 2013",
+          location: "Uyo, Akwa Ibom",
+          desc: "Donation of foodstuff and other provisions to the children",
+          img: "Asset/impact others/Visit to Akwa Ibom State Special Children's Center 3.jpg",
+        },
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "24th November, 2013",
+          location: "Darwny Hotel & Suites Uyo, Akwa Ibom State",
+          desc: "Annual General Meeting",
+          img: "Asset/impact others/Members & Guests At AGM 2013.jpg",
+        },
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "23rd November, 2013",
+          location: "Hotel Excels & Towers Warri, Delta State",
+          desc: "Annual General Meeting",
+          img: "Asset/impact others/Members & Guests At AGM 2012.jpg",
+        },
+
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "November, 2014",
+          location: "De Angels Hotel Enugu, Enugu State",
+          desc: "Annual General Meeting",
+          img: "Asset/impact others/Members & Guests At AGM 2014.jpg",
+        },
+        {
+          cat: "others",
+          title: "4th Quarter Visit to Red Cross Home.",
+          date: "December, 2015",
+          location: "Owerri, Imo State",
+          desc: "Donations of foodstuff and other provisions to the Red Cross Team",
+          img: "Asset/impact others/4th Quarter Visit to Red Cross Home..jpg",
+        },
+        {
+          cat: "others",
+          title: "4th Quarter Visit to Red Cross Home.",
+          date: "23rd November, 2015",
+          location: "Owerri, Imo State",
+          desc: "Donations of Foodstuff and other provisions to the Red Cross Team",
+          img: "Asset/impact others/4th Quarter Visit to Red Cross Home. 2.jpg",
+        },
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "21st November, 2015",
+          location: "Immanuel Road PH, Hotel Owerri, Imo State",
+          desc: "Annual General Meeting",
+          img: "Asset/impact others/Members & Guests At AGM2015.jpg",
+        },
+        {
+          cat: "others",
+          title: "Donation Of Building Materials for a Home",
+          date: "October, 2016",
+          location: "Port Harcourt city, Rivers State",
+          desc: "Donations of Building materials for a home",
+          img: "Asset/impact others/Donation Of Building Materials for a Home.jpg",
+        },
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "November, 2016",
+          location: "Villa Marina Hotel Exit, Akwa Ibom State",
+          desc: "Annual General Meeting",
+          img: "Asset/impact others/Members & Guests At AGM 2020.jpg",
+        },
+        {
+          cat: "others",
+          title: "Members & Guests At AGM",
+          date: "November, 2016",
+          location: "Owerri, Imo State",
+          desc: "Annual General Meeting",
+          img: "Asset/impact others/Members & Guests At AGM 2016.jpg",
+        },
+        {
+          cat: "others",
+          title: "Charity visit Q1 & Q2",
+          date: "June, 2026",
+          location: "Eagle Island, Port Harcourt",
+          desc: "Donation of foodstuff and other provisions to the children at David Bassey Ikpeme Foundation",
+          img: "Asset/impact others/Charity visit Q1 & Q2.jpg",
+        },
+        {
+          cat: "others",
+          title: "Charity visit Q1 & Q2",
+          date: "June, 2026",
+          location: "Eagle Island, Port Harcourt",
+          desc: "Donation of foodstuff and other provisions to the children at David Bassey Ikpeme Foundation",
+          img: "Asset/impact others/Charity visit Q1 & Q2 2.jpg",
+        },
+      ];
+
+      function buildCard(item) {
+        let imgHtml;
+        if (item.img) {
+          imgHtml = `<img loading="lazy" decoding="async" src="${item.img}" alt="${item.title}" />`;
+        } else {
+          imgHtml = placeholder(
+            item.cat,
+            item.cat.charAt(0).toUpperCase() + item.cat.slice(1),
+          );
+        }
+        return `
+        <div class="impact-card" data-cat="${item.cat}">
+          <div class="card-img">${imgHtml}</div>
+          <div class="card-body">
+            <h3>${item.title}</h3>
+            <div class="card-meta">
+              <div class="card-meta-row">${calIcon} ${item.date}</div>
+              <div class="card-meta-row">${pinIcon} ${item.location}</div>
+            </div>
+            <p>${item.desc}</p>
+          </div>
+        </div>`;
+      }
+
+      // Assign expected image paths for orphanage/others cards. Drop photos into
+      // these folders named 1.png, 2.png … in card order to replace the
+      // placeholders; missing files fall back to a styled placeholder below.
+      let oIdx = 0,
+        xIdx = 0;
+      items.forEach((it) => {
+        if (!it.img) {
+          if (it.cat === "orphanage")
+            it.img = `Asset/impact orphanage/${++oIdx}.png`;
+          else if (it.cat === "others")
+            it.img = `Asset/impact others/${++xIdx}.png`;
+        }
+      });
+
+      const grid = document.getElementById("cardsGrid");
+      grid.innerHTML = items.map(buildCard).join("");
+
+      // Graceful fallback: if an image file is missing, show the styled placeholder
+      grid.querySelectorAll("img").forEach((img) => {
+        img.addEventListener("error", () => {
+          const card = img.closest(".impact-card");
+          const cat = card ? card.dataset.cat : "";
+          const label = cat ? cat.charAt(0).toUpperCase() + cat.slice(1) : "";
+          const wrap = img.closest(".card-img");
+          if (wrap) wrap.innerHTML = placeholder(cat, label);
+        });
+      });
+
+      // Filter logic
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const f = btn.dataset.filter;
+          document.querySelectorAll(".impact-card").forEach((card) => {
+            card.classList.toggle(
+              "hidden",
+              f !== "all" && card.dataset.cat !== f,
+            );
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

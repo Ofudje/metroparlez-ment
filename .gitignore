@@ -1,0 +1,7 @@
+# High-res original photos kept locally as a backup (not versioned — ~300 MB)
+Asset_originals/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log

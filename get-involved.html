@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Involved — Metro Parlez-Ment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --red: #ed3237;
+        --red-dark: #be2929;
+        --footer-bg: #7b1818;
+        --radius: 8px;
+        --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: #1a1a1a;
+        background: #fff;
+      }
+      h1,
+      h2 {
+        font-family: "Playfair Display", Georgia, serif;
+        color: #020c0a;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        position: relative;
+        text-align: center;
+        padding: 64px 60px 56px;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 75% 130% at 82% 25%,
+          rgba(237, 50, 55, 0.2) 0%,
+          rgba(255, 255, 255, 0) 62%
+        );
+        pointer-events: none;
+      }
+      .hero h1 {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--red);
+        margin-bottom: 16px;
+        position: relative;
+      }
+      .hero p {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.7;
+        max-width: 480px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      /* ── WHY VOLUNTEER ── */
+      .why {
+        padding: 70px 60px;
+        background: #fff;
+        text-align: center;
+      }
+      .why h2 {
+        font-size: 34px;
+        font-weight: 800;
+        color: var(--red);
+        margin-bottom: 12px;
+      }
+      .why > p {
+        font-size: 15px;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto 48px;
+        line-height: 1.7;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .why-card {
+        border: 1px solid #e8e8e8;
+        border-radius: var(--radius);
+        padding: 28px 20px 24px;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+      .why-icon {
+        width: 56px;
+        height: 56px;
+        background: var(--red);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 18px;
+      }
+      .why-card h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .why-card p {
+        font-size: 13px;
+        color: #666;
+        line-height: 1.65;
+      }
+
+      /* ── VOLUNTEER FORM SECTION ── */
+      .volunteer-section {
+        padding: 70px 60px 80px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .vol-left h2 {
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 18px;
+      }
+      .vol-left > p {
+        font-size: 15px;
+        color: #555;
+        line-height: 1.7;
+        margin-bottom: 28px;
+      }
+
+      .vol-photo {
+        width: 100%;
+        border-radius: var(--radius);
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, #c9b69a, #7a5a3a);
+      }
+      .vol-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ── FORM ── */
+      .form-card {
+        background: #f6f6f4;
+        border: 1px solid #ededea;
+        border-radius: var(--radius);
+        padding: 32px;
+      }
+      .form-group {
+        margin-bottom: 14px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        color: #333;
+        background: #fff;
+        outline: none;
+        transition: border-color 0.2s;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: #aaa;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--red);
+      }
+
+      .select-wrap {
+        position: relative;
+      }
+      .select-wrap select {
+        cursor: pointer;
+        padding-right: 36px;
+      }
+      .select-wrap::after {
+        content: "";
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #888;
+        pointer-events: none;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 130px;
+      }
+
+      .btn-submit {
+        display: inline-block;
+        padding: 11px 28px;
+        background: var(--red);
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 6px;
+        transition: background 0.2s;
+      }
+      .btn-submit:hover {
+        background: var(--red-dark);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--footer-bg);
+        color: #fff;
+        padding: 60px 40px 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1.2fr 1.2fr 1.2fr;
+        gap: 50px;
+        padding-bottom: 48px;
+        max-width: 1320px;
+        margin: 0 auto;
+      }
+      .footer-brand {
+        padding-right: 20px;
+      }
+      .footer-brand .nav-logo {
+        color: #fff;
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+      .footer-brand .nav-logo img {
+        height: 36px;
+        width: auto;
+      }
+      .footer-brand p {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+        max-width: 280px;
+      }
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer-col h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 0.3px;
+      }
+      .footer-col ul {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .footer-col ul li {
+        margin-bottom: 0;
+      }
+      .footer-col ul li a {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.2s;
+      }
+      .footer-col ul li a:hover {
+        color: #fff;
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 14px;
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.5;
+      }
+      .footer-contact-item svg {
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+      .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.75);
+        transition: color 0.2s;
+      }
+      .social-link:hover {
+        color: #fff;
+      }
+      .social-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 18px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .footer-bottom p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .footer-bottom-links {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-bottom-links a {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .footer-bottom-links a:hover {
+        color: #fff;
+      }
+      /* volunteer layout helpers */
+      .volunteer-wrapper {
+        padding: 0 60px 80px;
+      }
+      .volunteer-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        max-width: 1100px;
+        margin: 0 auto;
+        align-items: stretch;
+      }
+      /* ── TABLET (769px – 1024px) ── */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .hero {
+          padding: 52px 30px 44px;
+        }
+        .hero h1 {
+          font-size: 42px;
+        }
+        .why {
+          padding: 60px 30px;
+        }
+        .why-grid {
+          grid-template-columns: repeat(2, 1fr);
+          max-width: 640px;
+        }
+        .volunteer-wrapper {
+          padding: 0 30px 70px;
+        }
+        footer {
+          padding: 50px 30px 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 28px;
+        }
+      }
+
+      /* ── MOBILE (≤ 768px) ── */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 40px 16px 32px;
+        }
+        .hero h1 {
+          font-size: 32px;
+        }
+        .hero p {
+          font-size: 14px;
+        }
+        .why {
+          padding: 48px 16px;
+        }
+        .why h2 {
+          font-size: 26px;
+        }
+        .why-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 14px;
+        }
+        .volunteer-wrapper {
+          padding: 0 16px 40px;
+        }
+        .volunteer-grid {
+          grid-template-columns: 1fr !important;
+          gap: 20px;
+        }
+        footer {
+          padding: 40px 16px 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+          padding: 16px 0;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="nav.css" />
+    <script src="nav.js" defer></script>
+  </head>
+  <body>
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Get Involved</h1>
+      <p>
+        Your time and compassion matter. Join us in building a stronger Port
+        Harcourt.
+      </p>
+    </div>
+
+    <!-- WHY VOLUNTEER -->
+    <section class="why">
+      <h2>Why Volunteer With Us?</h2>
+      <p>
+        Volunteering is more than giving back—it's an opportunity to grow,
+        connect, and create meaningful change
+      </p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              />
+            </svg>
+          </div>
+          <h3>Make Real Impact</h3>
+          <p>Directly Contribute To Improving Lives In Your Community</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3>Build Connections</h3>
+          <p>Network With Like-Minded Individuals And Community Leaders</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+              <line x1="9" y1="16" x2="15" y2="16" />
+            </svg>
+          </div>
+          <h3>Flexible Commitment</h3>
+          <p>Choose Opportunities That Fit Your Schedule And Interests</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+          </div>
+          <h3>Develop New Skills</h3>
+          <p>Gain Valuable Experience In Nonprofit Work And Leadership</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOLUNTEER FORM -->
+    <div class="volunteer-wrapper">
+      <div class="volunteer-grid">
+        <div>
+          <h2
+            style="
+              font-family: &quot;Inter&quot;, sans-serif;
+              font-size: 36px;
+              font-weight: 800;
+              line-height: 1.2;
+              margin-bottom: 18px;
+            "
+          >
+            Let's join our community to become a volunteer
+          </h2>
+          <p
+            style="
+              font-size: 15px;
+              color: #555;
+              line-height: 1.7;
+              margin-bottom: 28px;
+            "
+          >
+            Volunteering is more than giving back—it's an opportunity to grow,
+            connect, and create meaningful change
+          </p>
+          <div class="vol-photo">
+            <img loading="lazy" decoding="async"
+              src="Asset/Gallery/picture.jpg"
+              alt="Metro Parlez-Ment volunteers with the community"
+            />
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email Address" />
+          </div>
+          <div class="form-row">
+            <input type="text" placeholder="Address" />
+            <div class="select-wrap">
+              <select>
+                <option value="" disabled selected>Occupation</option>
+                <option>Student</option>
+                <option>Professional</option>
+                <option>Business Owner</option>
+                <option>Retired</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Type Your Message"></textarea>
+          </div>
+          <button class="btn-submit">Send a Request</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="color: #fff; margin-bottom: 14px">
+            <img
+              src="Asset/Footer Logo.png"
+              alt="Metro Parlez-Ment"
+              style="height: 36px; width: auto"
+            />
+          </div>
+          <p>
+            Transforming lives through humanitarian outreach, supporting
+            vulnerable communities with compassion and dedication.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.7)"
+              stroke-width="2"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Metroparlezment@Gmail.Com
+          </div>
+          <div class="footer-contact-item">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.7)"
+              stroke-width="2"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            +2348033260669
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Social Media</h4>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <div class="social-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </div>
+              Instagram
+            </a>
+            <a href="https://www.facebook.com/share/g/1DK2ty9PqH/" class="social-link" target="_blank" rel="noopener">
+              <div class="social-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </div>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Metro Parlez-ment 2026. All Rights Reserved</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms and Conditions</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .querySelector(".btn-submit")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          const nameEl = document.querySelector(
+            'input[placeholder="Your Name"]',
+          );
+          const emailEl = document.querySelector(
+            'input[placeholder="Email Address"]',
+          );
+          const addressEl = document.querySelector(
+            'input[placeholder="Address"]',
+          );
+          const occupationEl = document.querySelector("select");
+          const messageEl = document.querySelector(
+            'textarea[placeholder="Type Your Message"]',
+          );
+          const inputs = [nameEl, emailEl, addressEl, occupationEl, messageEl];
+          let valid = true;
+
+          inputs.forEach((el) => {
+            if (!el || !el.value.trim()) {
+              el.style.borderColor = "#ED3237";
+              valid = false;
+            } else {
+              el.style.borderColor = "#ddd";
+            }
+          });
+
+          if (!valid) return;
+
+          const subject = encodeURIComponent(
+            `Volunteer Request from ${nameEl.value.trim()}`,
+          );
+          const body = encodeURIComponent(
+            `Name: ${nameEl.value.trim()}\nEmail: ${emailEl.value.trim()}\nAddress: ${addressEl.value.trim()}\nOccupation: ${occupationEl.value.trim()}\n\nMessage:\n${messageEl.value.trim()}`,
+          );
+          const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=metroparlezment@gmail.com&su=${subject}&body=${body}`;
+
+          window.open(gmailUrl, "_blank");
+
+          this.textContent = "Request Sent!";
+          this.style.background = "#28a745";
+          setTimeout(() => {
+            this.textContent = "Send a Request";
+            this.style.background = "";
+            inputs.forEach((el) => {
+              if (el.tagName.toLowerCase() === "select") {
+                el.selectedIndex = 0;
+              } else {
+                el.value = "";
+              }
+            });
+          }, 2500);
+        });
+    </script>
+  </body>
+</html>
