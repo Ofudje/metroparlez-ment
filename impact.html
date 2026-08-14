@@ -3,6 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="See the impact of Metro Parlez-Ment across Port Harcourt and Nigeria through medical outreach, education support, orphanage visits, and community development work."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ed3237" />
+    <meta property="og:title" content="Impact — Metro Parlez-Ment" />
+    <meta
+      property="og:description"
+      content="A record of Metro Parlez-Ment's meaningful outreach and support for vulnerable communities."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Metro Parlez-Ment" />
+    <meta property="og:image" content="Asset/Logo-hero.png" />
+    <meta property="og:locale" content="en_NG" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Impact — Metro Parlez-Ment" />
+    <meta
+      name="twitter:description"
+      content="A record of Metro Parlez-Ment's meaningful outreach and support for vulnerable communities."
+    />
+    <link rel="canonical" href="https://www.metroparlez-ment.org/impact.html" />
     <title>Impact — Metro Parlez-Ment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1070,6 +1092,14 @@
         // OTHERS
         {
           cat: "others",
+          title: "Presentation of Motorised Wheelchair",
+          date: "August, 7th 2026",
+          location: "Port Harcourt, Rivers State",
+          desc: "Presentation of motorised wheelchair to Dr Peter Awoyesuku A past speaker of Metro Parlezment Club From 2007-2011",
+          img: "Asset/Wheelchair.jpeg",
+        },
+        {
+          cat: "others",
           title: "Members & Guests At AGM",
           date: "November, 2007",
           location: "Haryon Hotel Uyo, Akwa Ibom State",
@@ -1259,7 +1289,8 @@
       function buildCard(item) {
         let imgHtml;
         if (item.img) {
-          imgHtml = `<img loading="lazy" decoding="async" src="${item.img}" alt="${item.title}" />`;
+          const extraClass = item.className ? ` class="${item.className}"` : "";
+          imgHtml = `<img loading="lazy" decoding="async" src="${item.img}" alt="${item.title}"${extraClass} />`;
         } else {
           imgHtml = placeholder(
             item.cat,
