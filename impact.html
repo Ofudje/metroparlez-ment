@@ -5,27 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="See the impact of Metro Parlez-Ment across Port Harcourt and Nigeria through medical outreach, education support, orphanage visits, and community development work."
+      content="Explore Metro Parlez-Ment’s impact stories and outreach programs in Port Harcourt, covering medical care, education support, orphanage care, and community welfare initiatives."
+    />
+    <meta
+      name="keywords"
+      content="Metro Parlez-Ment impact, charity impact Port Harcourt, medical outreach Nigeria, orphanage support, school support, humanitarian projects, social impact"
     />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#ed3237" />
-    <meta property="og:title" content="Impact — Metro Parlez-Ment" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Our Impact | Metro Parlez-Ment" />
     <meta
       property="og:description"
-      content="A record of Metro Parlez-Ment's meaningful outreach and support for vulnerable communities."
+      content="See how Metro Parlez-Ment is improving lives through outreach, healthcare, education and compassionate support in Port Harcourt."
     />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content="Asset/Footer Logo.png" />
     <meta property="og:site_name" content="Metro Parlez-Ment" />
-    <meta property="og:image" content="Asset/Logo-hero.png" />
-    <meta property="og:locale" content="en_NG" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Impact — Metro Parlez-Ment" />
+    <meta name="twitter:title" content="Metro Parlez-Ment Impact" />
     <meta
       name="twitter:description"
-      content="A record of Metro Parlez-Ment's meaningful outreach and support for vulnerable communities."
+      content="Read our stories of impact across medical outreach, school support, orphanage care and community welfare."
     />
-    <link rel="canonical" href="https://www.metroparlez-ment.org/impact.html" />
-    <title>Impact — Metro Parlez-Ment</title>
+    <meta name="twitter:image" content="Asset/Footer Logo.png" />
+    <link rel="icon" type="image/png" href="Asset/Footer Logo.png" />
+    <title>Impact — Metro Parlez-Ment | Outreach and Community Change</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -183,6 +187,11 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+      .card-img img[src*="Dr Peter"] {
+        object-fit: contain !important;
+        object-position: center top !important;
+        background: #f2efe9;
       }
       .card-img-placeholder {
         width: 100%;
@@ -1092,14 +1101,6 @@
         // OTHERS
         {
           cat: "others",
-          title: "Presentation of Motorised Wheelchair",
-          date: "August, 7th 2026",
-          location: "Port Harcourt, Rivers State",
-          desc: "Presentation of motorised wheelchair to Dr Peter Awoyesuku A past speaker of Metro Parlezment Club From 2007-2011",
-          img: "Asset/Wheelchair.jpeg",
-        },
-        {
-          cat: "others",
           title: "Members & Guests At AGM",
           date: "November, 2007",
           location: "Haryon Hotel Uyo, Akwa Ibom State",
@@ -1270,6 +1271,26 @@
         },
         {
           cat: "others",
+          title: "Presentation of Motorised Wheel Chair to Dr. Peter Awoyesuku",
+          date: "August 7th, 2026",
+          location: "Port Harcourt, Rivers State",
+          desc: "In continuation of our welfare support of Bringing Hope and Care to every life we touch, we donated a Motorised Wheel Chair to Dr. Peter Awoyesuku, Associate Professor at Rivers State University and Consultant Obstetrician and Gynaecologist at RSUTH.",
+          img: "Asset/impact others/Dr Peter.png",
+          imgPosition: "center top",
+          imgFit: "contain",
+        },
+        {
+          cat: "others",
+          title: "Presentation of Motorised Wheel Chair to Dr. Peter Awoyesuku",
+          date: "August 7th, 2026",
+          location: "Port Harcourt, Rivers State",
+          desc: "In continuation of our welfare support of Bringing Hope and Care to every life we touch, we donated a Motorised Wheel Chair to Dr. Peter Awoyesuku, Associate Professor at Rivers State University and Consultant Obstetrician and Gynaecologist at RSUTH.",
+          img: "Asset/impact others/Dr Peter 2.png",
+          imgPosition: "center top",
+          imgFit: "contain",
+        },
+        {
+          cat: "others",
           title: "Charity visit Q1 & Q2",
           date: "June, 2026",
           location: "Eagle Island, Port Harcourt",
@@ -1286,11 +1307,66 @@
         },
       ];
 
+      function parseImpactDate(rawDate) {
+        if (!rawDate || typeof rawDate !== "string") {
+          return new Date(0);
+        }
+
+        const monthMap = {
+          January: 0,
+          February: 1,
+          March: 2,
+          April: 3,
+          May: 4,
+          June: 5,
+          July: 6,
+          August: 7,
+          September: 8,
+          October: 9,
+          November: 10,
+          December: 11,
+        };
+
+        const value = rawDate.trim();
+        const ordinalMatch = value.match(
+          /^(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+),?\s*(\d{4})$/i,
+        );
+        const monthFirstMatch = value.match(
+          /^([A-Za-z]+)\s*,?\s*(\d{1,2})?(?:st|nd|rd|th)?\s*,?\s*(\d{4})$/i,
+        );
+        const monthOnlyMatch = value.match(/^([A-Za-z]+),?\s*(\d{4})$/i);
+
+        let month = 0;
+        let day = 1;
+        let year = 0;
+
+        if (ordinalMatch) {
+          day = Number(ordinalMatch[1]);
+          month = monthMap[ordinalMatch[2]] ?? 0;
+          year = Number(ordinalMatch[3]);
+        } else if (monthFirstMatch) {
+          month = monthMap[monthFirstMatch[1]] ?? 0;
+          day = monthFirstMatch[2] ? Number(monthFirstMatch[2]) : 1;
+          year = Number(monthFirstMatch[3]);
+        } else if (monthOnlyMatch) {
+          month = monthMap[monthOnlyMatch[1]] ?? 0;
+          year = Number(monthOnlyMatch[2]);
+        } else {
+          return new Date(0);
+        }
+
+        return new Date(Date.UTC(year, month, day));
+      }
+
+      items.sort((a, b) => parseImpactDate(b.date) - parseImpactDate(a.date));
+
       function buildCard(item) {
         let imgHtml;
         if (item.img) {
-          const extraClass = item.className ? ` class="${item.className}"` : "";
-          imgHtml = `<img loading="lazy" decoding="async" src="${item.img}" alt="${item.title}"${extraClass} />`;
+          const fit = item.imgFit || "cover";
+          const position = item.imgPosition || "center";
+          const styleAttr = ` style="object-fit: ${fit}; object-position: ${position};"`;
+          imgHtml = `<img loading="lazy" decoding="async" src="${item.img}" alt="${item.title}"${styleAttr} />`;
         } else {
           imgHtml = placeholder(
             item.cat,
