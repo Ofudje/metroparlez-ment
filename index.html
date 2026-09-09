@@ -70,6 +70,7 @@
         font-family: "Inter", sans-serif;
         color: var(--text-dark);
         background: #fff;
+        overflow-x: hidden;
       }
 
       /* Display headings use the Playfair Display serif per Figma design tokens */
@@ -152,13 +153,50 @@
           #fbdedb 45%,
           #f2f0ee 80%
         );
-        padding: 70px 60px 0;
+        padding: 0 60px 0;
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: end;
         gap: 40px;
         min-height: 440px;
         overflow: hidden;
+      }
+      .hero-announcement {
+        grid-column: 1 / -1;
+        position: relative;
+        overflow: hidden;
+        background: rgba(123, 24, 24, 0.96);
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        margin: 0 -60px;
+        box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+      }
+      .hero-announcement-track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        min-width: 100%;
+        white-space: nowrap;
+        animation: ticker-scroll 32s linear infinite;
+      }
+      .hero-announcement-track span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 12px 28px;
+        color: rgba(255, 255, 255, 0.95);
+      }
+      @keyframes ticker-scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
       }
       .hero::before,
       .hero::after {
@@ -768,7 +806,10 @@
         }
 
         .hero {
-          padding: 50px 30px 0 !important;
+          padding: 0 30px 0 !important;
+        }
+        .hero-announcement {
+          margin: 0 -30px;
         }
         .hero-content {
           padding: 0 0 40px !important;
@@ -800,9 +841,17 @@
         /* Hero */
         .hero {
           grid-template-columns: 1fr !important;
-          padding: 36px 16px 0 !important;
+          padding: 0 16px 0 !important;
           min-height: auto;
           gap: 0;
+        }
+        .hero-announcement {
+          margin: 0 -16px;
+        }
+        .hero-announcement-track span {
+          font-size: 10px;
+          letter-spacing: 0.08em;
+          padding: 10px 18px;
         }
         .hero-content {
           padding: 0 0 30px !important;
@@ -887,6 +936,22 @@
   <body>
     <!-- HERO -->
     <section class="hero">
+      <div class="hero-announcement" aria-label="Event announcement ticker" role="status">
+        <div class="hero-announcement-track">
+          <span>2026 ANNUAL GENERAL MEETING</span>
+          <span>HOLDING IN BONNY ISLAND, RIVERS STATE</span>
+          <span>DATE: FRIDAY, NOVEMBER 21ST – SUNDAY, NOVEMBER 23RD, 2026</span>
+          <span>VENUE: PEARLS PARADISE HOTEL, BONNY</span>
+          <span>THEME: SUSTAINING HUMANITARIAN EXCELLENCE THROUGH OUR LEGACY OF SERVICE</span>
+          <span>COME AND ENJOY THE HOSPITALITY OF THE BONNY PEOPLE WHILE PERFORMING CHARITY WITH A PURE HEART.</span>
+          <span>2026 ANNUAL GENERAL MEETING</span>
+          <span>HOLDING IN BONNY ISLAND, RIVERS STATE</span>
+          <span>DATE: FRIDAY, NOVEMBER 21ST – SUNDAY, NOVEMBER 23RD, 2026</span>
+          <span>VENUE: PEARLS PARADISE HOTEL, BONNY</span>
+          <span>THEME: SUSTAINING HUMANITARIAN EXCELLENCE THROUGH OUR LEGACY OF SERVICE</span>
+          <span>COME AND ENJOY THE HOSPITALITY OF THE BONNY PEOPLE WHILE PERFORMING CHARITY WITH A PURE HEART.</span>
+        </div>
+      </div>
       <div class="hero-content">
         <h1>Bringing Hope, Care And Opportunity To Every Life We Touch</h1>
         <p>
