@@ -198,6 +198,19 @@
           transform: translateX(-50%);
         }
       }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-announcement-track {
+          width: 100%;
+          min-width: 0;
+          white-space: normal;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .hero-announcement-track span {
+          white-space: normal;
+          text-align: center;
+        }
+      }
       .hero::before,
       .hero::after {
         content: "";
@@ -936,20 +949,36 @@
   <body>
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-announcement" aria-label="Event announcement ticker" role="status">
+      <div
+        class="hero-announcement"
+        aria-label="Event announcement ticker"
+        role="status"
+      >
         <div class="hero-announcement-track">
           <span>2026 ANNUAL GENERAL MEETING</span>
           <span>HOLDING IN BONNY ISLAND, RIVERS STATE</span>
           <span>DATE: FRIDAY, NOVEMBER 21ST – SUNDAY, NOVEMBER 23RD, 2026</span>
           <span>VENUE: PEARLS PARADISE HOTEL, BONNY</span>
-          <span>THEME: SUSTAINING HUMANITARIAN EXCELLENCE THROUGH OUR LEGACY OF SERVICE</span>
-          <span>COME AND ENJOY THE HOSPITALITY OF THE BONNY PEOPLE WHILE PERFORMING CHARITY WITH A PURE HEART.</span>
+          <span
+            >THEME: SUSTAINING HUMANITARIAN EXCELLENCE THROUGH OUR LEGACY OF
+            SERVICE</span
+          >
+          <span
+            >COME AND ENJOY THE HOSPITALITY OF THE BONNY PEOPLE WHILE PERFORMING
+            CHARITY WITH A PURE HEART.</span
+          >
           <span>2026 ANNUAL GENERAL MEETING</span>
           <span>HOLDING IN BONNY ISLAND, RIVERS STATE</span>
           <span>DATE: FRIDAY, NOVEMBER 21ST – SUNDAY, NOVEMBER 23RD, 2026</span>
           <span>VENUE: PEARLS PARADISE HOTEL, BONNY</span>
-          <span>THEME: SUSTAINING HUMANITARIAN EXCELLENCE THROUGH OUR LEGACY OF SERVICE</span>
-          <span>COME AND ENJOY THE HOSPITALITY OF THE BONNY PEOPLE WHILE PERFORMING CHARITY WITH A PURE HEART.</span>
+          <span
+            >THEME: SUSTAINING HUMANITARIAN EXCELLENCE THROUGH OUR LEGACY OF
+            SERVICE</span
+          >
+          <span
+            >COME AND ENJOY THE HOSPITALITY OF THE BONNY PEOPLE WHILE PERFORMING
+            CHARITY WITH A PURE HEART.</span
+          >
         </div>
       </div>
       <div class="hero-content">
